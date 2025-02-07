@@ -1,5 +1,8 @@
 import sys
-import tkinter as tk
+if "tkinter" not in sys.modules:
+    import tkinter as tk
+else:
+    import tkinter as tk
 
 class PresentationApp:
     def __init__(self, root):
@@ -18,6 +21,9 @@ class PresentationApp:
         self.add_button = tk.Button(root, text="Add Slide", command=self.add_slide)
         self.add_button.pack()
         
+        self.delete_button = tk.Button(root, text="Delete Slide", command=self.delete_slide)
+        self.delete_button.pack()
+        
         self.prev_button = tk.Button(root, text="Previous", command=self.prev_slide)
         self.prev_button.pack(side=tk.LEFT, padx=20, pady=10)
         
@@ -28,16 +34,19 @@ class PresentationApp:
         
     def display_slide(self):
         self.canvas.delete("all")
-        slide_text = self.slides[self.current_slide]
-        self.canvas.create_text(300, 200, text=slide_text, font=("Arial", 20), fill="black")
+        if self.slides:
+            slide_text = self.slides[self.current_slide]
+            self.canvas.create_text(300, 200, text=slide_text, font=("Arial", 20), fill="black")
+        else:
+            self.canvas.create_text(300, 200, text="No slides available", font=("Arial", 20), fill="black")
     
     def next_slide(self):
-        if self.current_slide < len(self.slides) - 1:
+        if self.slides and self.current_slide < len(self.slides) - 1:
             self.current_slide += 1
             self.display_slide()
     
     def prev_slide(self):
-        if self.current_slide > 0:
+        if self.slides and self.current_slide > 0:
             self.current_slide -= 1
             self.display_slide()
     
@@ -46,6 +55,18 @@ class PresentationApp:
         if new_slide_text:
             self.slides.append(new_slide_text)
             self.entry.delete(0, tk.END)
+            if len(self.slides) == 1:
+                self.current_slide = 0
+            self.display_slide()
+    
+    def delete_slide(self):
+        if self.slides:
+            del self.slides[self.current_slide]
+            if not self.slides:
+                self.current_slide = 0
+            else:
+                self.current_slide = min(self.current_slide, len(self.slides) - 1)
+            self.display_slide()
 
 if __name__ == "__main__":
     try:
