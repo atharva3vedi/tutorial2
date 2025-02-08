@@ -1,8 +1,8 @@
 Simple Presentation Software
 Project Contributors
-•	Priyanshu Kundu 
-•	Atharva Trivedi
-•	Ashlesha
+•	Atharva Trivedi 
+•	Ashlesha Virulkar
+• Priyanshu Kundu 
 Project Overview
 This project involves the design and development of a simple presentation software that allows users to:
 1.	Create, edit, and navigate through slides.
@@ -24,7 +24,7 @@ Key Features
 •	Save presentations in JSON format.
 •	Load presentations from saved JSON files.
 •	Maintain text and image information when saving and loading presentations.
-4. AI-Powered Features (Optional)
+4. AI-Powered Features
 •	AI-driven text summarization using Groq's API for efficient and intelligent slide content generation.
 ________________________________________
 
@@ -53,27 +53,15 @@ Dependencies
 •	Pillow: For image handling
 •	json: For file handling
 •	Groq: For AI-based summarization
-•	ONNX Runtime (optional, for AI optimization)
 ________________________________________
-
-
-
-
-
-
 
 How to Run the Application
 1.	Install all required dependencies.
-2.	Run the presentation_app.py script.
+2.	Run the basic_app.py script.
 3.	Use the GUI to create and manage slides.
 4.	Save presentations using the "Save" button and load them later with the "Load" button.
 5.	Generate AI-based text summaries by clicking the "AI Summary" button.
-________________________________________
-File Format Specification
-•	JSON: Stores slide title, text, and image paths.
-Example JSON structure:
  
-
 Challenges and Key Learnings
 Challenges
 •	Efficiently rendering text and images on a canvas.
