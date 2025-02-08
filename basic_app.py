@@ -78,7 +78,7 @@ class PresentationApp:
         title = self.slides[self.current_slide].get("title", "")
         text = self.slides[self.current_slide].get("text", "")
 
-        client = Groq(api_key='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')
+        client = Groq(api_key='NqhPjEaSzG71SkfkM')
 
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": f"Summarize this: Title: {title}, Body: {text}"}],
